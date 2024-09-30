@@ -12,18 +12,33 @@ class People(db.Model):
     height = db.Column(db.String(10), nullable=False)
     mass = db.Column(db.String(10), nullable=False)
     skin_color = db.Column(db.String(10), nullable=False)
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "birth_year": self.birth_year,
+            "eye_color": self.eye_color,
+            "gender": self.gender,
+            "hair_color": self.hair_color,
+            "height": self.height,
+            "mass": self.mass,
+            "skin_color": self.skin_color
+        }
 
 class Planet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     climate = db.Column(db.String(10), nullable=False)
     diameter = db.Column(db.String(10), nullable=False)
-    gravity = db.Column(db.String(10), nullable=False)
-    orbital_period = db.Column(db.String(10), nullable=False)
-    population = db.Column(db.String(10), nullable=False)
-    rotation_period = db.Column(db.String(10), nullable=False)
-    surface_water = db.Column(db.String(10), nullable=False)
     terrain = db.Column(db.String(10), nullable=False)
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "diameter": self.diameter,
+            "climate": self.climate,
+            "terrain": self.terrain
+        }
 
 
  
@@ -31,6 +46,13 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+
+        }
 
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
